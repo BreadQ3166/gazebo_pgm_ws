@@ -16,6 +16,9 @@ find_package(Boost REQUIRED COMPONENTS system filesystem)
 find_package(PCL 1.2 REQUIRED COMPONENTS common io)
 find_package(octomap REQUIRED)
 
+# 新增查找 PNG 库
+find_package(PNG REQUIRED)    # <--- 添加这一行
+
 # Include directories
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/include
@@ -23,6 +26,7 @@ include_directories(
   ${Boost_INCLUDE_DIRS}
   ${PCL_INCLUDE_DIRS}
   ${OCTOMAP_INCLUDE_DIRS}
+  ${PNG_INCLUDE_DIRS}    # <--- 添加这一行
 )
 
 # Link directories
@@ -58,6 +62,7 @@ target_link_libraries(gazebo_map_creator_plugin_auto
   ${Boost_LIBRARIES}
   ${PCL_LIBRARIES}
   ${OCTOMAP_LIBRARIES}
+  ${PNG_LIBRARIES}       # <--- 添加这一行
   pthread
 )
 
@@ -72,6 +77,7 @@ target_link_libraries(map_creator_cli
   ${Boost_LIBRARIES}
   ${PCL_LIBRARIES}
   ${OCTOMAP_LIBRARIES}
+  ${PNG_LIBRARIES}       # <--- 添加这一行
   pthread
 )
 
